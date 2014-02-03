@@ -1,7 +1,9 @@
-Koa-CRUD
+koa-razor-sampleCRUD
 ========
 
 A simple CRUD demo for Koa.js and Node.js
+
+Forked to use Razor View Engine
 
 <h3>How to set up and run the app</h3>
 
