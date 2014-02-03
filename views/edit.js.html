@@ -1,0 +1,12 @@
+@{
+    layout = "layout.js.html"; 
+    viewBag.Title = "Edit ToDo Item";
+}
+<h1>Edit Todo Item</h1>
+<p>Edit a Todo item.</p>
+<form action="/todo/update" method="post">
+    <p><input type="hidden" value="@model.todo.id" name="id"></p>
+    <p><input type="text" value="@model.todo.name"  name="name"></p>
+    <p><input type="text" value="@model.todo.description"  name="description"></p>
+    <p><input type="submit" value="Update"></p>
+</form>

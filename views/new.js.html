@@ -1,8 +1,7 @@
-{% extends 'layout.html' %}
-
-{% block title %}New Todo{% endblock %}
-
-{% block content %}
+@{
+    layout = "layout.js.html"; 
+    viewBag.Title = "New ToDo Item";
+}
   <h1>Add Todo Item</h1>
   <p>Create a new Todo item</p>
   <form action="/todo/create" method="post">
@@ -10,4 +9,3 @@
     <p><input type="text" placeholder="Description" name="description"></p>
     <p><input type="submit" value="Create"></p>
   </form>
-{% endblock %}

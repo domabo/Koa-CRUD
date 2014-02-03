@@ -1,20 +1,25 @@
 /**
  * Module dependencies.
  */
+ var error = require('koa-error');
 var logger = require('koa-logger');
 var route = require('koa-route');
-var views = require('co-views');
 var parse = require('co-body');
 var koa = require('koa');
 var app = koa();
+var views = require('koa-razor-vash');
+var path = require('path');
+
 
 // "data store"
 var todos = []; //To Do : DB change to MongoDB
 
 // middleware
 app.use(logger());
+app.use(error());
 
 // route middleware
+app.use(views(path.join( __dirname, '/views')));
 app.use(route.get('/', list));
 app.use(route.get('/todo/new', add));
 app.use(route.get('/todo/:id', show));
@@ -23,23 +28,20 @@ app.use(route.get('/todo/edit/:id', edit));
 app.use(route.post('/todo/create', create));
 app.use(route.post('/todo/update', update));
 
-//Specifying Swig view engine
-var render= views(__dirname + '/views', { map: { html: 'swig' }});
-
 // route definitions
 
 /**
  * Todo item List.
  */
 function *list() {
-  this.body = yield render('index', { todos: todos });
+  this.body = yield this.render('index', { todos: todos });
 }
 
 /**
  * Form for create new todo item.
  */
 function *add() {
-  this.body = yield render('new');
+  this.body = yield this.render('new');
 }
 
 /**
@@ -48,7 +50,7 @@ function *add() {
 function *edit(id) {
     var todo = todos[id];
     if (!todo) this.throw(404, 'invalid todo id');
-    this.body = yield render('edit', { todo: todo });
+    this.body = yield this.render('edit', { todo: todo });
 }
 
 /**
@@ -58,7 +60,7 @@ function *edit(id) {
 function *show(id) {
   var todo = todos[id];
   if (!todo) this.throw(404, 'invalid todo id');
-  this.body = yield render('show', { todo: todo });
+  this.body = yield this.render('show', { todo: todo });
 }
 
 /**
@@ -101,5 +103,5 @@ function *update() {
 }
 
 // http server listening
-app.listen(3000);
-console.log('listening on port 3000');
+app.listen(process.env.PORT);
+console.log('listening on port ' + process.env.PORT);

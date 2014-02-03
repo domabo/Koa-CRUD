@@ -1,16 +1,17 @@
 {
-    "name": "koa-CRUD",
-    "description": "Basic CRUD demo with Koa.js",
-    "author": "shijuvar",
-    "version": "0.0.1",
-    "repository": "https://github.com/shijuvar/koa-CRUD",
+    "name": "koa-razor-sampleCRUD",
+    "description": "Basic CRUD demo with Koa.js forked for razor",
+    "author": "shijuvar; domabo",
+    "version": "0.0.2",
+    "repository": "http://github.com/domabo/koa-razor-sampleCRUD.git",
     "dependencies": {
+        "koa-razor-razorjs": "git://github.com/domabo/koa-razor-razorjs.git",
         "koa": "~0.2.0",
         "co-body": "0.0.1",
-        "co-views": "~0.1.0",
-        "swig": "~1.2.2",
         "koa-logger": "~1.1.0",
-        "koa-route": "~1.0.2"
+        "koa-route": "~1.0.2",
+        "koa-error": "git://github.com/domabo/koa-error.git",
+        "koa-razor-vash": "git://github.com/domabo/koa-razor-vash.git"
     },
     "engines": {
         "node": ">= 0.11.9"
