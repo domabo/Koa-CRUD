@@ -7,7 +7,9 @@ var route = require('koa-route');
 var parse = require('co-body');
 var koa = require('koa');
 var app = koa();
-var views = require('koa-razor-vash');
+//razor view engines:  only one of following two lines uncommented
+var views = require('koa-razor-razorjs');
+//var views = require('koa-razor-vash');
 var path = require('path');
 
 

@@ -1,0 +1,9 @@
+@{
+    layout = "layout.js.html"; 
+    model.Title = @model.todo.name;
+}
+  <h1>@model.todo.name</h1>
+  <p>@model.todo.description </p>
+  <p><i>Created On: </i> @model.todo.created_on.toDateString()</p>
+  <p><i>Last Updated On: </i> @model.todo.updated_on.toDateString()</p>
+  <p><a href="/">Back to List</a></p>
